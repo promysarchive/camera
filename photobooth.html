@@ -48,6 +48,12 @@ body{
     gap:15px;
 }
 
+#strip{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
 .camera-frame{
     position:relative;
     display:inline-block;
@@ -193,8 +199,16 @@ if (photos.length < 4) {
 }
 
 if (photos.length === 4) {
-    alert("All photos taken!");
+
+    document.getElementById("strip").innerHTML = `
+        <p>PHOTO 1</p>
+        <p>PHOTO 2</p>
+        <p>PHOTO 3</p>
+        <p>PHOTO 4</p>
+    `;
+
 }
+       
 document.getElementById("countdown").style.display = "none";
 
 }, 3000);
