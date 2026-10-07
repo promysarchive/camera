@@ -247,71 +247,36 @@ finalCanvas.height = 1400;
 finalContext.fillStyle = "white";
 finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
 
-const img1 = new Image();
+Promise.all(
+    photos.map(photo => {
+        return new Promise(resolve => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = photo;
+        });
+    })
+).then(images => {
 
-img1.onload = function() {
+    finalContext.drawImage(images[0], 10, 10, 280, 300);
+    finalContext.drawImage(images[1], 10, 330, 280, 300);
+    finalContext.drawImage(images[2], 10, 650, 280, 300);
+    finalContext.drawImage(images[3], 10, 970, 280, 300);
 
-    finalContext.drawImage(
-        img1,
-        10,
-        10,
-        280,
-        300
+    finalContext.fillStyle = "black";
+    finalContext.font = "bold 30px Arial";
+    finalContext.textAlign = "center";
+
+    finalContext.fillText(
+        "PROMYS",
+        finalCanvas.width / 2,
+        1340
     );
 
-};
+    finalImage = finalCanvas.toDataURL("image/png");
 
-img1.src = photos[0];
-console.log(photos[0]);
-const img2 = new Image();
+    alert("STRIP READY");
 
-img2.onload = function() {
-
-    finalContext.drawImage(
-        img2,
-        10,
-        330,
-        280,
-        300
-    );
-
-};
-
-img2.src = photos[1];
-
-const img3 = new Image();
-
-img3.onload = function() {
-
-    finalContext.drawImage(
-        img3,
-        10,
-        650,
-        280,
-        300
-    );
-
-};
-
-img3.src = photos[2];
-
-const img4 = new Image();
-
-img4.onload = function() {
-
-    finalContext.drawImage(
-        img4,
-        10,
-        970,
-        280,
-        300
-    );
-
-alert("STRIP READY");
-
-};
-
-img4.src = photos[3];
+});
 
 finalContext.fillStyle = "black";
 finalContext.font = "bold 30px Arial";
