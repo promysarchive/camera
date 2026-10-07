@@ -178,6 +178,21 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 let photos = [];
 let finalImage = "";
+    document.getElementById("download").addEventListener("click", function() {
+
+    if (finalImage === "") {
+        alert("Take photos first!");
+        return;
+    }
+
+    const link = document.createElement("a");
+
+    link.href = finalImage;
+    link.download = "promys-photobooth.png";
+
+    link.click();
+
+});
     
 document.getElementById("snap").addEventListener("click", function() {
 
@@ -305,6 +320,8 @@ finalContext.fillText(
     1340
 );
 
+finalImage = finalCanvas.toDataURL("image/png");
+    
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
