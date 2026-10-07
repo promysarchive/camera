@@ -184,10 +184,13 @@ photos.push(canvas.toDataURL("image/png"));
 
 console.log("Photos taken:", photos.length);
 
+if (photos.length < 4) {
+    alert("Next photo!");
+}
+
 if (photos.length === 4) {
     alert("All photos taken!");
 }
-
 document.getElementById("countdown").style.display = "none";
 
 }, 3000);
