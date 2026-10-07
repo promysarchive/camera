@@ -6,6 +6,10 @@
 <title>PHOTO BOOTH</title>
 
 <style>
+video{
+    width:80vw;
+    max-width:800px;
+}
 body{
     background:black;
     color:white;
@@ -20,7 +24,15 @@ body{
 </head>
 <body>
 
-<h1>PHOTO BOOTH COMING SOON</h1>
-
+<video id="camera" autoplay playsinline></video>
+<script>
+navigator.mediaDevices.getUserMedia({ video: true })
+.then(function(stream) {
+    document.getElementById("camera").srcObject = stream;
+})
+.catch(function(error) {
+    console.log(error);
+});
+</script>
 </body>
 </html>
