@@ -25,6 +25,9 @@ body{
 <body>
 
 <video id="camera" autoplay playsinline></video>
+
+<button id="snap">TAKE PHOTO</button>
+    
 <script>
 navigator.mediaDevices.getUserMedia({ video: true })
 .then(function(stream) {
