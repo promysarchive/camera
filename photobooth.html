@@ -185,7 +185,9 @@ photos.push(canvas.toDataURL("image/png"));
 console.log("Photos taken:", photos.length);
 
 if (photos.length < 4) {
-    alert("Next photo!");
+    setTimeout(function() {
+        document.getElementById("snap").click();
+    }, 3000);
 }
 
 if (photos.length === 4) {
