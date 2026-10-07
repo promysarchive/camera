@@ -220,6 +220,15 @@ if (photos.length < 4) {
 }
 
 if (photos.length === 4) {
+ 
+const finalCanvas = document.getElementById("finalStrip");
+const finalContext = finalCanvas.getContext("2d");
+
+finalCanvas.width = 300;
+finalCanvas.height = 1400;
+
+finalContext.fillStyle = "white";
+finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
 
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
