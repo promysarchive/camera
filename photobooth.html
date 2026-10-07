@@ -274,9 +274,6 @@ Promise.all(
 
     finalImage = finalCanvas.toDataURL("image/png");
 
-    alert("STRIP READY");
-
-});
 
 finalContext.fillStyle = "black";
 finalContext.font = "bold 30px Arial";
@@ -289,7 +286,8 @@ finalContext.fillText(
 );
 
 finalImage = finalCanvas.toDataURL("image/png");
-    
+
+alert("STRIP READY");
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
