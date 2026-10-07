@@ -43,7 +43,8 @@ color:black;
 <video id="camera" autoplay playsinline></video>
 
 <button id="snap">TAKE PHOTO</button>
-    
+
+<canvas id="photo"></canvas>
 <script>
 navigator.mediaDevices.getUserMedia({ video: true })
 .then(function(stream) {
