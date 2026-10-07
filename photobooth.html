@@ -182,7 +182,11 @@ context.drawImage(video, 0, 0);
 
 photos.push(canvas.toDataURL("image/png"));
 
-console.log(photos);
+console.log("Photos taken:", photos.length);
+
+if (photos.length === 4) {
+    alert("All photos taken!");
+}
 
 document.getElementById("countdown").style.display = "none";
 
