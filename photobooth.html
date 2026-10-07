@@ -169,6 +169,15 @@ document.getElementById("snap").addEventListener("click", function() {
         document.getElementById("flash").style.opacity = "0";
     }, 150);
 
+    const video = document.getElementById("camera");
+const canvas = document.getElementById("photo");
+
+canvas.width = video.videoWidth;
+canvas.height = video.videoHeight;
+
+const context = canvas.getContext("2d");
+context.drawImage(video, 0, 0);
+
     document.getElementById("countdown").style.display = "none";
 
 }, 3000);
