@@ -295,6 +295,16 @@ img4.onload = function() {
 
 img4.src = photos[3];
 
+finalContext.fillStyle = "black";
+finalContext.font = "bold 30px Arial";
+finalContext.textAlign = "center";
+
+finalContext.fillText(
+    "PROMYS",
+    finalCanvas.width / 2,
+    1340
+);
+
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
