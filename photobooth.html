@@ -242,7 +242,7 @@ const finalCanvas = document.getElementById("finalStrip");
 const finalContext = finalCanvas.getContext("2d");
 
 finalCanvas.width = 300;
-finalCanvas.height = 1400;
+finalCanvas.height = 980;
 
 finalContext.fillStyle = "white";
 finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
@@ -257,10 +257,10 @@ Promise.all(
     })
 ).then(images => {
 
-    finalContext.drawImage(images[0], 10, 10, 280, 300);
-    finalContext.drawImage(images[1], 10, 330, 280, 300);
-    finalContext.drawImage(images[2], 10, 650, 280, 300);
-    finalContext.drawImage(images[3], 10, 970, 280, 300);
+    finalContext.drawImage(images[0], 10, 10, 280, 210);
+    finalContext.drawImage(images[1], 10, 240, 280, 210);
+    finalContext.drawImage(images[2], 10, 470, 280, 210);
+    finalContext.drawImage(images[3], 10, 700, 280, 210);
 
     finalContext.fillStyle = "black";
     finalContext.font = "bold 30px Arial";
@@ -269,7 +269,7 @@ Promise.all(
     finalContext.fillText(
         "PROMYS",
         finalCanvas.width / 2,
-        1340
+        940
     );
 
 finalContext.fillStyle = "black";
