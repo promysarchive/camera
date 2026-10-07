@@ -112,6 +112,7 @@ color:black;
 
 <div id="countdown"></div>
 <script>
+    
 navigator.mediaDevices.getUserMedia({ video: true })
 .then(function(stream) {
     document.getElementById("camera").srcObject = stream;
@@ -119,6 +120,12 @@ navigator.mediaDevices.getUserMedia({ video: true })
 .catch(function(error) {
     console.log(error);
 });
+    
+document.getElementById("snap").addEventListener("click", function() {
+    document.getElementById("countdown").style.display = "block";
+    document.getElementById("countdown").textContent = "3";
+});
+    
 </script>
 </body>
 </html>
