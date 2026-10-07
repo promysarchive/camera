@@ -231,6 +231,22 @@ finalCanvas.height = 1400;
 finalContext.fillStyle = "white";
 finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
 
+const img1 = new Image();
+
+img1.onload = function() {
+
+    finalContext.drawImage(
+        img1,
+        10,
+        10,
+        280,
+        300
+    );
+
+};
+
+img1.src = photos[0];
+
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
