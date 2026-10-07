@@ -180,7 +180,11 @@ canvas.height = video.videoHeight;
 const context = canvas.getContext("2d");
 context.drawImage(video, 0, 0);
 
-    document.getElementById("countdown").style.display = "none";
+photos.push(canvas.toDataURL("image/png"));
+
+console.log(photos);
+
+document.getElementById("countdown").style.display = "none";
 
 }, 3000);
 
