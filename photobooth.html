@@ -263,6 +263,22 @@ img2.onload = function() {
 
 img2.src = photos[1];
 
+const img3 = new Image();
+
+img3.onload = function() {
+
+    finalContext.drawImage(
+        img3,
+        10,
+        650,
+        280,
+        300
+    );
+
+};
+
+img3.src = photos[2];
+
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
