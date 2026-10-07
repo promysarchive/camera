@@ -32,16 +32,24 @@ button:hover{
 background:white;
 color:black;
 }
+
+.camera-box{
+    display:flex;
+    flex-directon:column;
+    align-items:center;
+    gap:20px;
+}
     
 </style>
 
 </head>
 <body>
 
-<video id="camera" autoplay playsinline></video>
-
-<button id="snap">TAKE PHOTO</button>
-
+<div class="camera-box">
+    <video id="camera" autoplay playsinline></video>
+    <button id="snap">TAKE PHOTO</button>
+</div>
+    
 <canvas id="photo"></canvas>
 <script>
 navigator.mediaDevices.getUserMedia({ video: true })
