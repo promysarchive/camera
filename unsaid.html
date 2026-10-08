@@ -151,7 +151,8 @@ document.getElementById("submit").addEventListener("click", async () => {
 
     if (response.ok) {
         alert("Answer submitted");
-        document.getElementById("answer").value = "";
+        window.location.reload();
+        
     } else {
         alert("Something went wrong");
         console.log(await response.text());
