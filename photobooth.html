@@ -308,6 +308,7 @@ finalContext.fillText(
 finalImage = finalCanvas.toDataURL("image/png");
 
 alert("STRIP READY");
+    document.getElementById("strip").style.display = "flex";
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
         <img src="${photos[1]}" >
