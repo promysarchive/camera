@@ -9,6 +9,7 @@
 video{
     width:70vw;
     max-width:700px;
+    transform: scaleX(-1);
 }
 body{
     background:black;
@@ -225,7 +226,19 @@ canvas.width = video.videoWidth;
 canvas.height = video.videoHeight;
 
 const context = canvas.getContext("2d");
-context.drawImage(video, 0, 0);
+
+context.save();
+context.scale(-1, 1);
+
+context.drawImage(
+    video,
+    -canvas.width,
+    0,
+    canvas.width,
+    canvas.height
+);
+
+context.restore();
 
 photos.push(canvas.toDataURL("image/png"));
 
