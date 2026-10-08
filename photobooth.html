@@ -128,6 +128,13 @@ color:black;
     margin-top:10px;
     transform:scaleX(1.3);
 }
+
+.strip-section{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
     
 </style>
 
@@ -156,18 +163,20 @@ color:black;
 
 </div>
 
-    <div class="options">
-        <button id="download">DOWNLOAD</button>
-    </div>
+<div class="strip-section">
+
+    <div id="strip"></div>
+
+    <button id="download">DOWNLOAD</button>
+
+</div>
 
 </div>
 
 <div id="countdown"></div>
 
 <canvas id="photo" style="display:none;"></canvas>
-<canvas id="finalStrip"style="display:none;"></canvas>
-    
-<div id="strip"></div>
+<canvas id="finalStrip" style="display:none;"></canvas>
     
 <script>
     
