@@ -169,7 +169,7 @@ color:black;
     color: black;
 }
 
-.camera-frame::after {
+.camera-frame.y2k-grain::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -392,6 +392,11 @@ filterButtons.forEach(button => {
         selectedFilter = this.dataset.filter;
 
         video.style.filter = filters[selectedFilter];
+
+document.querySelector(".camera-frame").classList.toggle(
+    "y2k-grain",
+    selectedFilter === "y2k"
+);
 
         filterButtons.forEach(btn => btn.classList.remove("active"));
         this.classList.add("active");
