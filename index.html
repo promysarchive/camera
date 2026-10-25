@@ -8,93 +8,93 @@
 <title>PROMYS</title>
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background:black;
-    background-size:cover;
-    background-position:center;
-    color:white;
-    font-family:Arial, sans-serif;
+body {
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
 }
 
 /* TOP BAR */
-.topbar{
-    height:65px;
-    width:100%;
-    padding:0 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:1px solid rgba(255,255,255,0.2);
+.topbar {
+    height: 65px;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
-.brand{
-    color:white;
-    text-decoration:none;
-    font-size:18px;
-    font-weight:900;
-    letter-spacing:2px;
+.brand {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #8eeaff, 0 0 20px #8eeaff;
 }
 
-.menu{
-    display:flex;
-    align-items:center;
-    gap:28px;
-    font-size:12px;
-    letter-spacing:1.5px;
+.top-links {
+    display: flex;
+    gap: 28px;
 }
 
-.menu a{
-    color:white;
-    text-decoration:none;
-    transition:opacity 0.2s ease;
+.top-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1px;
 }
 
-.menu a:hover{
-    opacity:0.5;
+.top-links a:hover {
+    opacity: 0.5;
 }
 
-/* KEEP THE ORIGINAL HOMEPAGE FEEL */
-.logo{
-    position:absolute;
-    left:50%;
-    top:50%;
-    transform:translate(-50%,-50%);
-    font-size:clamp(70px,12vw,150px);
-    font-weight:900;
-    line-height:0.82;
-    font-family:Arial,sans-serif;
-    letter-spacing:-8px;
-    text-align:center;
+/* MAIN BODY — ORIGINAL NUMBERED MENU */
+.menu {
+    position: absolute;
+    left: 340px;
+    top: 220px;
+    font-size: 24px;
+    letter-spacing: 2px;
+    line-height: normal;
+    text-shadow: 0 0 8px #8eeaff, 0 0 16px #8eeaff;
 }
 
-@media(max-width:700px){
-    .topbar{
-        height:auto;
-        min-height:65px;
-        padding:18px;
-        align-items:flex-start;
-        gap:20px;
+.menu a {
+    color: white;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 650px) {
+    .topbar {
+        padding: 0 18px;
     }
 
-    .menu{
-        justify-content:flex-end;
-        flex-wrap:wrap;
-        gap:12px 16px;
-        font-size:10px;
+    .top-links {
+        gap: 12px;
     }
 
-    .logo{
-        letter-spacing:-4px;
+    .top-links a {
+        font-size: 9px;
+    }
+
+    .menu {
+        left: 10%;
+        top: 180px;
+        font-size: clamp(16px, 4vw, 24px);
     }
 }
-
 </style>
 </head>
 
@@ -103,15 +103,19 @@ body{
 <header class="topbar">
     <a href="index.html" class="brand">PROMYS</a>
 
-    <nav class="menu">
-        <a href="archive.html">001 / ARCHIVE</a>
-        <a href="photobooth.html">002 / PHOTO BOOTH</a>
-        <a href="#">003 / PROJECTS</a>
-        <a href="unsaid.html">004 / UNSAID</a>
+    <nav class="top-links">
+        <a href="index.html">HOME</a>
+        <a href="photobooth.html">PHOTOBOOTH</a>
+        <a href="unsaid.html">UNSAID</a>
     </nav>
 </header>
 
-<div class="logo">PROMYS</div>
+<main class="menu">
+    <a href="archive.html">001 / ARCHIVE</a><br><br>
+    <a href="photobooth.html">002 / PHOTO BOOTH</a><br><br>
+    <a href="#">003 / PROJECTS</a><br><br>
+    <a href="unsaid.html">004 / UNSAID</a>
+</main>
 
 </body>
 </html>
