@@ -18,6 +18,67 @@ body{
     margin:0;
 }
 
+/* TOP NAVIGATION */
+.topbar {
+    height: 65px;
+    width: 100%;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    box-sizing: border-box;
+}
+
+.brand {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.top-links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.top-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 1px;
+    transition: opacity 0.2s ease;
+}
+
+.top-links a:hover {
+    opacity: 0.5;
+}
+
+@media (max-width: 650px) {
+    .topbar {
+        height: auto;
+        min-height: 65px;
+        padding: 18px;
+        gap: 20px;
+    }
+
+    .top-links {
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+    }
+
+    .top-links a {
+        font-size: 9px;
+    }
+
+    .brand {
+        font-size: 16px;
+    }
+}
+
 .page{
     display:flex;
     align-items:center;
@@ -183,17 +244,20 @@ color:black;
 
 </head>
 <body>
+<header class="topbar">
+    <a href="index.html" class="brand">PROMYS</a>
 
+    <nav class="top-links">
+        <a href="index.html">HOME</a>
+        <a href="archive.html">ARCHIVE</a>
+        <a href="photobooth.html">PHOTOBOOTH</a>
+        <a href="#">PROJECTS</a>
+        <a href="unsaid.html">UNSAID</a>
+    </nav>
+</header>
+    
 <div class="page">
 
-    <a href="https://promysarchive.github.io/camera" class="logo">
-        P<br>
-        R<br>
-        O<br>
-        M<br>
-        Y<br>
-        S
-    </a>
 
     <div class="camera-section">
 
