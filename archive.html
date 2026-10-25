@@ -14,24 +14,29 @@
     margin: 0;
     padding: 0;
 }
+
 :root {
     --bg: #080808;
     --white: #f5f5f5;
     --grey: #858585;
     --line: #303030;
 }
+
 body {
     background: var(--bg);
     color: var(--white);
     font-family: 'Space Grotesk', sans-serif;
 }
+
 body.no-scroll {
     overflow: hidden;
 }
+
 a {
     color: inherit;
     text-decoration: none;
 }
+
 button {
     font: inherit;
 }
@@ -46,6 +51,7 @@ button {
     align-items: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
+
 .brand {
     color: white;
     text-decoration: none;
@@ -54,11 +60,13 @@ button {
     font-weight: 900;
     letter-spacing: 1px;
 }
+
 .top-links {
     display: flex;
     align-items: center;
     gap: 28px;
 }
+
 .top-links a {
     color: white;
     text-decoration: none;
@@ -66,6 +74,7 @@ button {
     letter-spacing: 1px;
     transition: opacity 0.2s ease;
 }
+
 .top-links a:hover {
     opacity: 0.5;
 }
@@ -74,6 +83,7 @@ button {
 .collections {
     padding: 70px 8% 110px;
 }
+
 .section-heading {
     border-top: 1px solid var(--line);
     padding: 18px 0;
@@ -93,6 +103,7 @@ button {
     gap: 85px 25px;
     align-items: start;
 }
+
 .collection {
     border: 0;
     padding: 0;
@@ -102,17 +113,21 @@ button {
     cursor: pointer;
     min-width: 0;
 }
+
 .collection:nth-child(1) {
     grid-column: 1 / 7;
 }
+
 .collection:nth-child(2) {
     grid-column: 8 / 13;
     margin-top: 130px;
 }
+
 .collection:nth-child(3) {
     grid-column: 3 / 10;
     margin-top: 10px;
 }
+
 .cover {
     position: relative;
     padding: 8px;
@@ -120,22 +135,27 @@ button {
     overflow: hidden;
     transition: transform .35s ease;
 }
+
 .collection:nth-child(1) .cover {
     transform: rotate(-1.5deg);
     aspect-ratio: 4 / 5;
 }
+
 .collection:nth-child(2) .cover {
     transform: rotate(1.8deg);
     aspect-ratio: 3 / 4;
 }
+
 .collection:nth-child(3) .cover {
     transform: rotate(-1deg);
     aspect-ratio: 16 / 10;
 }
+
 .collection:hover .cover,
 .collection:focus-visible .cover {
     transform: rotate(0deg) scale(1.015);
 }
+
 .cover img {
     width: 100%;
     height: 100%;
@@ -143,9 +163,11 @@ button {
     display: block;
     transition: transform .5s ease;
 }
+
 .collection:hover .cover img {
     transform: scale(1.025);
 }
+
 .cover-label {
     position: absolute;
     top: 17px;
@@ -157,6 +179,7 @@ button {
     font-size: 9px;
     letter-spacing: 1px;
 }
+
 .cover-count {
     position: absolute;
     right: 17px;
@@ -166,6 +189,7 @@ button {
     font-family: 'DM Mono', monospace;
     font-size: 9px;
 }
+
 .collection-info {
     display: flex;
     justify-content: space-between;
@@ -173,11 +197,13 @@ button {
     gap: 12px;
     margin-top: 22px;
 }
+
 .collection-info h2 {
     font-size: clamp(17px, 2.2vw, 25px);
     font-weight: 500;
     letter-spacing: -1px;
 }
+
 .collection-info p {
     margin-top: 7px;
     color: var(--grey);
@@ -185,12 +211,48 @@ button {
     font-size: 9px;
     line-height: 1.8;
 }
+
 .arrow {
     font-size: 22px;
     transition: transform .2s;
 }
+
 .collection:hover .arrow {
     transform: translate(4px, -4px);
+}
+
+/* SINN6R VIDEO */
+.modal-video {
+    display: none;
+    width: 100%;
+    max-height: 65vh;
+    object-fit: contain;
+    background: #000;
+    margin: 0 0 30px;
+}
+
+.modal-video.visible {
+    display: block;
+}
+
+/* SINN6R CONCERT VIDEO */
+.concert-video {
+    display: none;
+    width: 100%;
+    margin: 25px 0 35px;
+    background: #000;
+    border: 1px solid var(--line);
+}
+
+.concert-video.visible {
+    display: block;
+}
+
+.concert-video video {
+    display: block;
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
 }
 
 /* SCRAPBOOK POPUP */
@@ -203,9 +265,11 @@ button {
     padding: 25px;
     overflow-y: auto;
 }
+
 .modal.open {
     display: block;
 }
+
 .modal-inner {
     max-width: 1000px;
     margin: 25px auto;
@@ -213,12 +277,14 @@ button {
     background: #0b0b0b;
     border: 1px solid var(--line);
 }
+
 .modal-top {
     display: flex;
     justify-content: space-between;
     align-items: start;
     gap: 20px;
 }
+
 .close {
     background: none;
     color: white;
@@ -228,12 +294,14 @@ button {
     line-height: 1;
     padding: 0 0 10px 10px;
 }
+
 .modal-title {
     font-size: clamp(38px, 8vw, 85px);
     letter-spacing: -.075em;
     line-height: .95;
     margin: 25px 0 15px;
 }
+
 .modal-meta {
     color: var(--grey);
     font-family: 'DM Mono', monospace;
@@ -241,6 +309,7 @@ button {
     line-height: 2;
     margin-bottom: 25px;
 }
+
 .modal-note {
     color: #c4c4c4;
     font-size: 14px;
@@ -249,16 +318,19 @@ button {
     max-width: 600px;
     margin-bottom: 35px;
 }
+
 .photo-grid {
     columns: 2;
     column-gap: 15px;
 }
+
 .photo-grid img {
     width: 100%;
     display: block;
     margin-bottom: 15px;
     break-inside: avoid;
 }
+
 .photo-grid .photo-placeholder {
     padding: 40px 20px;
     background: #151515;
@@ -292,53 +364,67 @@ footer {
         padding: 18px;
         gap: 20px;
     }
+
     .top-links {
         justify-content: flex-end;
         flex-wrap: wrap;
         gap: 12px 16px;
     }
+
     .top-links a {
         font-size: 9px;
     }
+
     .brand {
         font-size: 16px;
     }
+
     .collections {
         padding: 50px 6% 75px;
     }
+
     .grid {
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 55px 14px;
     }
+
     .collection:nth-child(1) {
         grid-column: 1 / 6;
     }
+
     .collection:nth-child(2) {
         grid-column: 3 / 7;
         margin-top: 0;
     }
+
     .collection:nth-child(3) {
         grid-column: 1 / 7;
         margin-top: 0;
     }
+
     .collection-info h2 {
         font-size: 17px;
     }
+
     .modal {
         padding: 10px;
     }
+
     .modal-inner {
         margin: 10px auto;
         padding: 20px 15px;
     }
+
     .photo-grid {
         columns: 1;
     }
+
     footer {
         padding: 22px 6%;
         font-size: 8px;
     }
 }
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         transition-duration: .01ms !important;
@@ -348,8 +434,10 @@ footer {
 </head>
 
 <body>
+
 <header class="topbar">
     <a href="index.html" class="brand">PROMYS</a>
+
     <nav class="top-links">
         <a href="index.html">HOME</a>
         <a href="archive.html">ARCHIVE</a>
@@ -363,6 +451,7 @@ footer {
         <span>SELECTED MEMORIES</span>
         <span>2026 — ONGOING</span>
     </div>
+
     <div class="grid" id="collection-grid"></div>
 </main>
 
@@ -373,13 +462,28 @@ footer {
 
 <div class="modal" id="modal" aria-hidden="true">
     <div class="modal-inner">
+
         <div class="modal-top">
             <p class="eyebrow">PERSONAL ARCHIVE / ENTRY</p>
             <button class="close" id="close-modal" aria-label="Close">&times;</button>
         </div>
+
         <h2 class="modal-title" id="modal-title"></h2>
         <p class="modal-meta" id="modal-meta"></p>
+
+        <video class="modal-video" id="modal-video" controls playsinline muted preload="metadata">
+            Your browser does not support the video tag.
+        </video>
+
         <p class="modal-note" id="modal-note"></p>
+
+        <div class="concert-video" id="concert-video">
+            <video id="sinn6r-video" controls muted playsinline preload="metadata">
+                <source src="promys%20vlog%20sinn6r%202.mp4" type="video/mp4">
+                Your browser does not support this video.
+            </video>
+        </div>
+
         <div class="photo-grid" id="photo-grid"></div>
     </div>
 </div>
@@ -392,6 +496,7 @@ const collections = [
         location: "OUTERNET / LONDON",
         category: "LIVE / MUSIC",
         cover: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
+        video: "promys%20vlog%20sinn6r%202.mp4",
         photos: [],
         note: "SINN6R THROUGH MY EYES.\n\n"
     },
@@ -448,6 +553,7 @@ function renderCollections() {
         info.className = "collection-info";
 
         const text = document.createElement("div");
+
         const title = document.createElement("h2");
         title.textContent = item.title;
 
@@ -470,9 +576,24 @@ function renderCollections() {
 
 function openCollection(item) {
     document.getElementById("modal-title").textContent = item.title;
+
     document.getElementById("modal-meta").textContent =
         item.date + " / " + item.location + " / " + item.category;
+
     document.getElementById("modal-note").textContent = item.note;
+
+    const video = document.getElementById("modal-video");
+
+    video.pause();
+    video.removeAttribute("src");
+    video.load();
+    video.classList.remove("visible");
+
+    if (item.video) {
+        video.src = item.video;
+        video.classList.add("visible");
+        video.muted = true;
+    }
 
     const photoGrid = document.getElementById("photo-grid");
     photoGrid.replaceChildren();
@@ -480,8 +601,10 @@ function openCollection(item) {
     if (item.photos.length === 0) {
         const placeholder = document.createElement("div");
         placeholder.className = "photo-placeholder";
+
         placeholder.textContent =
             "YOUR PHOTOS GO HERE — ADD IMAGE PATHS TO THIS COLLECTION IN THE CODE.";
+
         photoGrid.appendChild(placeholder);
     } else {
         item.photos.forEach(src => {
@@ -496,10 +619,20 @@ function openCollection(item) {
     modal.classList.add("open");
     modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("no-scroll");
+
+    if (item.video) {
+        video.play().catch(() => {
+            // If autoplay is blocked, the visitor can press play.
+        });
+    }
+
     document.getElementById("close-modal").focus();
 }
 
 function closeCollection() {
+    const video = document.getElementById("modal-video");
+
+    video.pause();
     modal.classList.remove("open");
     modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("no-scroll");
@@ -508,14 +641,19 @@ function closeCollection() {
 document.getElementById("close-modal").addEventListener("click", closeCollection);
 
 modal.addEventListener("click", event => {
-    if (event.target === modal) closeCollection();
+    if (event.target === modal) {
+        closeCollection();
+    }
 });
 
 document.addEventListener("keydown", event => {
-    if (event.key === "Escape") closeCollection();
+    if (event.key === "Escape") {
+        closeCollection();
+    }
 });
 
 renderCollections();
 </script>
+
 </body>
 </html>
