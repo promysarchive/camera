@@ -1,660 +1,100 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ARCHIVE</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-:root {
-    --bg: #080808;
-    --white: #f5f5f5;
-    --grey: #858585;
-    --line: #303030;
-}
-
-body {
-    background: var(--bg);
-    color: var(--white);
-    font-family: 'Space Grotesk', sans-serif;
-}
-
-body.no-scroll {
-    overflow: hidden;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-/* SHARED HEADER */
-.topbar {
-    height: 65px;
-    width: 100%;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-}
-
-.brand {
-    color: white;
-    text-decoration: none;
-    font-family: Arial, sans-serif;
-    font-size: 18px;
-    font-weight: 900;
-    letter-spacing: 1px;
-}
-
-.top-links {
-    display: flex;
-    align-items: center;
-    gap: 28px;
-}
-
-.top-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 10px;
-    letter-spacing: 1px;
-    transition: opacity 0.2s ease;
-}
-
-.top-links a:hover {
-    opacity: 0.5;
-}
-
-/* COLLECTIONS */
-.collections {
-    padding: 70px 8% 110px;
-}
-
-.section-heading {
-    border-top: 1px solid var(--line);
-    padding: 18px 0;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 45px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    color: var(--grey);
-    letter-spacing: 1px;
-}
-
-/* SCRAPBOOK GRID */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 85px 25px;
-    align-items: start;
-}
-
-.collection {
-    border: 0;
-    padding: 0;
-    color: inherit;
-    background: none;
-    text-align: left;
-    cursor: pointer;
-    min-width: 0;
-}
-
-.collection:nth-child(1) {
-    grid-column: 1 / 7;
-}
-
-.collection:nth-child(2) {
-    grid-column: 8 / 13;
-    margin-top: 130px;
-}
-
-.collection:nth-child(3) {
-    grid-column: 3 / 10;
-    margin-top: 10px;
-}
-
-.cover {
-    position: relative;
-    padding: 8px;
-    background: #171717;
-    overflow: hidden;
-    transition: transform .35s ease;
-}
-
-.collection:nth-child(1) .cover {
-    transform: rotate(-1.5deg);
-    aspect-ratio: 4 / 5;
-}
-
-.collection:nth-child(2) .cover {
-    transform: rotate(1.8deg);
-    aspect-ratio: 3 / 4;
-}
-
-.collection:nth-child(3) .cover {
-    transform: rotate(-1deg);
-    aspect-ratio: 16 / 10;
-}
-
-.collection:hover .cover,
-.collection:focus-visible .cover {
-    transform: rotate(0deg) scale(1.015);
-}
-
-.cover img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform .5s ease;
-}
-
-.collection:hover .cover img {
-    transform: scale(1.025);
-}
-
-.cover-label {
-    position: absolute;
-    top: 17px;
-    left: 17px;
-    padding: 7px 9px;
-    color: #fff;
-    background: #080808;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.cover-count {
-    position: absolute;
-    right: 17px;
-    bottom: 17px;
-    padding: 7px 9px;
-    background: #080808;
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-}
-
-.collection-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.collection-info h2 {
-    font-size: clamp(17px, 2.2vw, 25px);
-    font-weight: 500;
-    letter-spacing: -1px;
-}
-
-.collection-info p {
-    margin-top: 7px;
-    color: var(--grey);
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    line-height: 1.8;
-}
-
-.arrow {
-    font-size: 22px;
-    transition: transform .2s;
-}
-
-.collection:hover .arrow {
-    transform: translate(4px, -4px);
-}
-
-/* SINN6R VIDEO */
-.modal-video {
-    display: none;
-    width: 100%;
-    max-height: 65vh;
-    object-fit: contain;
-    background: #000;
-    margin: 0 0 30px;
-}
-
-.modal-video.visible {
-    display: block;
-}
-
-/* SINN6R CONCERT VIDEO */
-.concert-video {
-    display: none;
-    width: 100%;
-    margin: 25px 0 35px;
-    background: #000;
-    border: 1px solid var(--line);
-}
-
-.concert-video.visible {
-    display: block;
-}
-
-.concert-video video {
-    display: block;
-    width: 100%;
-    max-height: 70vh;
-    object-fit: contain;
-    transform: rotate(-90deg);
-}
-
-/* SCRAPBOOK POPUP */
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 20;
-    background: rgba(0, 0, 0, .94);
-    padding: 25px;
-    overflow-y: auto;
-}
-
-.modal.open {
-    display: block;
-}
-
-.modal-inner {
-    max-width: 1000px;
-    margin: 25px auto;
-    padding: 30px;
-    background: #0b0b0b;
-    border: 1px solid var(--line);
-}
-
-.modal-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: start;
-    gap: 20px;
-}
-
-.close {
-    background: none;
-    color: white;
-    border: 0;
-    cursor: pointer;
-    font-size: 30px;
-    line-height: 1;
-    padding: 0 0 10px 10px;
-}
-
-.modal-title {
-    font-size: clamp(38px, 8vw, 85px);
-    letter-spacing: -.075em;
-    line-height: .95;
-    margin: 25px 0 15px;
-}
-
-.modal-meta {
-    color: var(--grey);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    line-height: 2;
-    margin-bottom: 25px;
-}
-
-.modal-note {
-    color: #c4c4c4;
-    font-size: 14px;
-    line-height: 1.9;
-    white-space: pre-wrap;
-    max-width: 600px;
-    margin-bottom: 35px;
-}
-
-.photo-grid {
-    columns: 2;
-    column-gap: 15px;
-}
-
-.photo-grid img {
-    width: 100%;
-    display: block;
-    margin-bottom: 15px;
-    break-inside: avoid;
-}
-
-.photo-grid .photo-placeholder {
-    padding: 40px 20px;
-    background: #151515;
-    border: 1px solid #292929;
-    color: var(--grey);
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    text-align: center;
-    margin-bottom: 15px;
-    line-height: 2;
-}
-
-/* FOOTER */
-footer {
-    border-top: 1px solid var(--line);
-    padding: 25px 5%;
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    color: var(--grey);
-    font-family: 'DM Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-/* MOBILE */
-@media (max-width: 650px) {
-    .topbar {
-        height: auto;
-        min-height: 65px;
-        padding: 18px;
-        gap: 20px;
-    }
-
-    .top-links {
-        justify-content: flex-end;
-        flex-wrap: wrap;
-        gap: 12px 16px;
-    }
-
-    .top-links a {
-        font-size: 9px;
-    }
-
-    .brand {
-        font-size: 16px;
-    }
-
-    .collections {
-        padding: 50px 6% 75px;
-    }
-
-    .grid {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-        gap: 55px 14px;
-    }
-
-    .collection:nth-child(1) {
-        grid-column: 1 / 6;
-    }
-
-    .collection:nth-child(2) {
-        grid-column: 3 / 7;
-        margin-top: 0;
-    }
-
-    .collection:nth-child(3) {
-        grid-column: 1 / 7;
-        margin-top: 0;
-    }
-
-    .collection-info h2 {
-        font-size: 17px;
-    }
-
-    .modal {
-        padding: 10px;
-    }
-
-    .modal-inner {
-        margin: 10px auto;
-        padding: 20px 15px;
-    }
-
-    .photo-grid {
-        columns: 1;
-    }
-
-    footer {
-        padding: 22px 6%;
-        font-size: 8px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
-        transition-duration: .01ms !important;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROMYS — ARCHIVE</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080808;
+            color: white;
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 65px;
+            width: 100%;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .brand {
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 18px;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .top-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .top-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 10px;
+            letter-spacing: 1px;
+            transition: opacity 0.2s ease;
+        }
+
+        .top-links a:hover {
+            opacity: 0.5;
+        }
+
+        @media (max-width: 650px) {
+            .topbar {
+                height: auto;
+                min-height: 65px;
+                padding: 18px;
+                gap: 20px;
+            }
+
+            .top-links {
+                justify-content: flex-end;
+                flex-wrap: wrap;
+                gap: 12px 16px;
+            }
+
+            .top-links a {
+                font-size: 9px;
+            }
+
+            .brand {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="topbar">
-    <a href="index.html" class="brand">PROMYS</a>
+    <header class="topbar">
+        <a href="index.html" class="brand">PROMYS</a>
 
-    <nav class="top-links">
-        <a href="index.html">HOME</a>
-        <a href="archive.html">ARCHIVE</a>
-        <a href="photobooth.html">PHOTOBOOTH</a>
-        <a href="unsaid.html">UNSAID</a>
-    </nav>
-</header>
-
-<main class="collections">
-    <div class="section-heading">
-        <span>SELECTED MEMORIES</span>
-        <span>2026 — ONGOING</span>
-    </div>
-
-    <div class="grid" id="collection-grid"></div>
-</main>
-
-<footer>
-    <span>PROMYS® ARCHIVE</span>
-    <span>PERSONAL / 2026</span>
-</footer>
-
-<div class="modal" id="modal" aria-hidden="true">
-    <div class="modal-inner">
-
-        <div class="modal-top">
-            <p class="eyebrow">PERSONAL ARCHIVE / ENTRY</p>
-            <button class="close" id="close-modal" aria-label="Close">&times;</button>
-        </div>
-
-        <h2 class="modal-title" id="modal-title"></h2>
-        <p class="modal-meta" id="modal-meta"></p>
-
-        <video class="modal-video" id="modal-video" controls playsinline muted preload="metadata">
-            Your browser does not support the video tag.
-        </video>
-
-        <p class="modal-note" id="modal-note"></p>
-
-        <div class="concert-video" id="concert-video">
-            <video id="sinn6r-video" controls muted playsinline preload="metadata">
-                <source src="promys%20vlog%20sinn6r%202.mp4" type="video/mp4">
-                Your browser does not support this video.
-            </video>
-        </div>
-
-        <div class="photo-grid" id="photo-grid"></div>
-    </div>
-</div>
-
-<script>
-const collections = [
-    {
-        title: "SINN6R",
-        date: "27 APRIL 2026",
-        location: "OUTERNET / LONDON",
-        category: "LIVE / MUSIC",
-        cover: "https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=85",
-        video: "promys%20vlog%20sinn6r%202.mp4",
-        photos: [],
-        note: "SINN6R THROUGH MY EYES.\n\n"
-    },
-    {
-        title: "UNI ADVENTURES",
-        date: "SEPTEMBER 2026 — PRESENT",
-        location: "LONDON, UK",
-        category: "PERSONAL / UNIVERSITY",
-        cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=85",
-        photos: [],
-        note: "A collection of memories from uni.\n\nNew friends, nights out, spontaneous plans and little moments worth keeping."
-    },
-    {
-        title: "F3MII",
-        date: "ADD CONCERT DATE",
-        location: "ADD VENUE / CITY",
-        category: "LIVE / MUSIC",
-        cover: "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=85",
-        photos: [],
-        note: "F3MII, live.\n\nAdd your photos and memories from the night here."
-    }
-];
-
-const grid = document.getElementById("collection-grid");
-const modal = document.getElementById("modal");
-
-function renderCollections() {
-    grid.replaceChildren();
-
-    collections.forEach((item, index) => {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.className = "collection";
-
-        const cover = document.createElement("div");
-        cover.className = "cover";
-
-        const img = document.createElement("img");
-        img.src = item.cover;
-        img.alt = item.title + " cover photograph";
-        img.loading = "lazy";
-
-        const label = document.createElement("span");
-        label.className = "cover-label";
-        label.textContent = "P-" + String(index + 1).padStart(3, "0");
-
-        const count = document.createElement("span");
-        count.className = "cover-count";
-        count.textContent = "OPEN ↗";
-
-        cover.append(img, label, count);
-
-        const info = document.createElement("div");
-        info.className = "collection-info";
-
-        const text = document.createElement("div");
-
-        const title = document.createElement("h2");
-        title.textContent = item.title;
-
-        const meta = document.createElement("p");
-        meta.textContent = item.date + " / " + item.category;
-
-        text.append(title, meta);
-
-        const arrow = document.createElement("span");
-        arrow.className = "arrow";
-        arrow.textContent = "↗";
-
-        info.append(text, arrow);
-        button.append(cover, info);
-
-        button.addEventListener("click", () => openCollection(item));
-        grid.appendChild(button);
-    });
-}
-
-function openCollection(item) {
-    document.getElementById("modal-title").textContent = item.title;
-
-    document.getElementById("modal-meta").textContent =
-        item.date + " / " + item.location + " / " + item.category;
-
-    document.getElementById("modal-note").textContent = item.note;
-
-    const video = document.getElementById("modal-video");
-
-    video.pause();
-    video.removeAttribute("src");
-    video.load();
-    video.classList.remove("visible");
-
-    if (item.video) {
-        video.src = item.video;
-        video.classList.add("visible");
-        video.muted = true;
-    }
-
-    const photoGrid = document.getElementById("photo-grid");
-    photoGrid.replaceChildren();
-
-    if (item.photos.length === 0) {
-        const placeholder = document.createElement("div");
-        placeholder.className = "photo-placeholder";
-
-        placeholder.textContent =
-            "YOUR PHOTOS GO HERE — ADD IMAGE PATHS TO THIS COLLECTION IN THE CODE.";
-
-        photoGrid.appendChild(placeholder);
-    } else {
-        item.photos.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.alt = item.title + " memory";
-            img.loading = "lazy";
-            photoGrid.appendChild(img);
-        });
-    }
-
-    modal.classList.add("open");
-    modal.setAttribute("aria-hidden", "false");
-    document.body.classList.add("no-scroll");
-
-    if (item.video) {
-        video.play().catch(() => {
-            // If autoplay is blocked, the visitor can press play.
-        });
-    }
-
-    document.getElementById("close-modal").focus();
-}
-
-function closeCollection() {
-    const video = document.getElementById("modal-video");
-
-    video.pause();
-    modal.classList.remove("open");
-    modal.setAttribute("aria-hidden", "true");
-    document.body.classList.remove("no-scroll");
-}
-
-document.getElementById("close-modal").addEventListener("click", closeCollection);
-
-modal.addEventListener("click", event => {
-    if (event.target === modal) {
-        closeCollection();
-    }
-});
-
-document.addEventListener("keydown", event => {
-    if (event.key === "Escape") {
-        closeCollection();
-    }
-});
-
-renderCollections();
-</script>
+        <nav class="top-links">
+            <a href="index.html">HOME</a>
+            <a href="archive.html">ARCHIVE</a>
+            <a href="photobooth.html">PHOTOBOOTH</a>
+            <a href="unsaid.html">UNSAID</a>
+        </nav>
+    </header>
 
 </body>
 </html>
+```
