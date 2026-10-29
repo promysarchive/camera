@@ -1,18 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://promys.co.uk/</loc>
-  </url>
-  <url>
-    <loc>https://promys.co.uk/archive.html</loc>
-  </url>
-  <url>
-    <loc>https://promys.co.uk/photobooth.html</loc>
-  </url>
-  <url>
-    <loc>https://promys.co.uk/unsaid.html</loc>
-  </url>
-  <url>
-    <loc>https://promys.co.uk/responses.html</loc>
-  </url>
-</urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://promys.co.uk/</loc></url><url><loc>https://promys.co.uk/archive.html</loc></url><url><loc>https://promys.co.uk/photobooth.html</loc></url><url><loc>https://promys.co.uk/unsaid.html</loc></url><url><loc>https://promys.co.uk/responses.html</loc></url></urlset>
