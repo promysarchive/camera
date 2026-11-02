@@ -1,29 +1,42 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Read the PROMYS Privacy Policy to learn how anonymous responses and other information are handled.">
+
 <title>PROMYS - PRIVACY POLICY</title>
+
 <link rel="icon" type="image/jpeg" href="/favicon.jpg">
 
 <style>
-
-body{
-    background:black;
-    color:white;
-    font-family:Arial,sans-serif;
-    margin:0;
+* {
+    box-sizing: border-box;
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
 /* TOP NAVIGATION */
+
 .topbar {
-    height: 65px;
+    min-height: 65px;
     width: 100%;
     padding: 0 40px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(255,255,255,0.2);
-    box-sizing: border-box;
+    gap: 24px;
 }
 
 .brand {
@@ -32,6 +45,7 @@ body{
     font-size: 18px;
     font-weight: 900;
     letter-spacing: 1px;
+    flex-shrink: 0;
 }
 
 .top-links {
@@ -52,12 +66,145 @@ body{
     opacity: 0.5;
 }
 
+/* PAGE LAYOUT */
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 70px 40px 100px;
+}
+
+.eyebrow {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 900;
+    letter-spacing: -2px;
+    line-height: 1;
+    margin: 0 0 24px;
+}
+
+.intro {
+    max-width: 650px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: #bdbdbd;
+    margin-bottom: 55px;
+}
+
+.updated {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #777;
+    margin-top: 30px;
+}
+
+/* POLICY CONTENT */
+
+.policy {
+    max-width: 720px;
+}
+
+.policy section {
+    padding: 28px 0;
+    border-top: 1px solid rgba(255,255,255,0.18);
+}
+
+.policy h2 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin: 0 0 18px;
+}
+
+.policy h3 {
+    font-size: 12px;
+    font-weight: 700;
+    margin: 24px 0 10px;
+}
+
+.policy p,
+.policy li {
+    font-size: 13px;
+    line-height: 1.9;
+    color: #bdbdbd;
+}
+
+.policy p {
+    margin: 0 0 14px;
+}
+
+.policy ul {
+    padding-left: 20px;
+    margin: 10px 0 18px;
+}
+
+.policy a {
+    color: #fff;
+    text-underline-offset: 4px;
+}
+
+.policy a:hover {
+    opacity: 0.65;
+}
+
+.contact {
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 22px;
+    margin-top: 18px;
+}
+
+.contact a {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 13px;
+}
+
+/* FOOTER */
+
+.footer {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer p,
+.footer a {
+    color: #777;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.footer a {
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: white;
+}
+
+/* MOBILE */
+
 @media (max-width: 650px) {
     .topbar {
-        height: auto;
         min-height: 65px;
-        padding: 18px;
-        gap: 20px;
+        padding: 16px 18px;
+        gap: 18px;
+        align-items: flex-start;
+    }
+
+    .brand {
+        font-size: 16px;
+        padding-top: 2px;
     }
 
     .top-links {
@@ -70,49 +217,256 @@ body{
         font-size: 9px;
     }
 
-    .brand {
-        font-size: 16px;
+    .page {
+        padding: 50px 22px 70px;
+    }
+
+    .label {
+        letter-spacing: -1px;
+    }
+
+    .intro {
+        margin-bottom: 40px;
+    }
+
+    .policy p,
+    .policy li {
+        font-size: 12px;
+    }
+
+    .footer {
+        padding: 22px;
+        flex-wrap: wrap;
     }
 }
 
-.page{
-    display:flex;
-    align-items:flex-start;
-    gap:120px;
-    padding:60px 40px;
-}
+@media (max-width: 380px) {
+    .topbar {
+        flex-direction: column;
+        gap: 18px;
+    }
 
-.logo{
-    text-decoration:none;
-    color:white;
-    font-size:120px;
-    font-weight:900;
-    line-height:0.82;
-    transform:scaleX(1.3);
+    .top-links {
+        justify-content: flex-start;
+    }
 }
-
-.content{
-    max-width:700px;
-}
-
-.label{
-    letter-spacing:3px;
-    font-size:48px;
-    font-weight:900;
-    margin-bottom:40px;
-}
-    
 </style>
 </head>
 
 <body>
-<header class="topbar">
-    <a href="index.html" class="brand">PROMYS</a>
 
-    <nav class="top-links">
-        <a href="index.html">HOME</a>
-        <a href="archive.html">ARCHIVE</a>
-        <a href="photobooth.html">PHOTOBOOTH</a>
-        <a href="unsaid.html">UNSAID</a>
+<header class="topbar">
+    <a href="/index.html" class="brand">PROMYS</a>
+
+    <nav class="top-links" aria-label="Main navigation">
+        <a href="/index.html">HOME</a>
+        <a href="/archive.html">ARCHIVE</a>
+        <a href="/photobooth.html">PHOTOBOOTH</a>
+        <a href="/unsaid.html">UNSAID</a>
     </nav>
 </header>
+
+<main class="page">
+
+    <div class="eyebrow">PROMYS / INFORMATION</div>
+
+    <h1 class="label">PRIVACY<br>POLICY</h1>
+
+    <p class="intro">
+        PROMYS is a creative platform exploring photography,
+        archives, expression and connection. This policy explains
+        how information is handled when you visit or use the website.
+    </p>
+
+    <div class="updated">LAST UPDATED: 2 NOVEMBER 2026</div>
+
+    <div class="policy">
+
+        <section>
+            <h2>01 / About Promys</h2>
+            <p>
+                PROMYS is a creative platform featuring photography,
+                digital archives and anonymous written responses.
+            </p>
+            <p>
+                This Privacy Policy explains how information is
+                collected, used, stored and handled when you interact
+                with the website.
+            </p>
+        </section>
+
+        <section>
+            <h2>02 / Information We Handle</h2>
+
+            <h3>Anonymous responses</h3>
+            <p>
+                When you submit a response through PROMYS, the text
+                of your answer is stored in a Supabase database.
+                Submissions are reviewed by a human for moderation
+                purposes.
+            </p>
+            <p>
+                The response form is designed not to request your
+                name or email address. However, information you
+                voluntarily include in an answer may identify you
+                or another person.
+            </p>
+            <p>
+                Please do not include sensitive personal information
+                or private information about other people in your
+                submissions.
+            </p>
+
+            <h3>Photobooth</h3>
+            <p>
+                The PROMYS photobooth allows visitors to take
+                photographs through their browser. Photographs are
+                processed temporarily and are not intentionally
+                uploaded to or stored by PROMYS. They are cleared
+                when the photobooth page resets.
+            </p>
+            <p>
+                Visitors are responsible for saving any photographs
+                they wish to keep before resetting or leaving the page.
+            </p>
+
+            <h3>Technical information</h3>
+            <p>
+                The website is hosted using GitHub Pages and uses
+                Supabase to store anonymous responses. These providers
+                may process technical information as part of providing,
+                maintaining and securing their services.
+            </p>
+            <p>
+                The precise technical information processed by these
+                services has not been fully verified. This policy
+                should be updated if further data collection is
+                identified.
+            </p>
+        </section>
+
+        <section>
+            <h2>03 / How Information Is Used</h2>
+            <p>
+                Submitted responses are used to operate the creative
+                features of PROMYS and may be reviewed by a human for
+                moderation purposes.
+            </p>
+            <p>
+                Moderation may include identifying content that is
+                inappropriate, harmful, abusive or inconsistent with
+                the website's rules.
+            </p>
+            <p>
+                We do not intentionally use the anonymous response
+                feature to identify individual visitors.
+            </p>
+        </section>
+
+        <section>
+            <h2>04 / Storage and Third-Party Services</h2>
+            <p>
+                Anonymous responses are stored using Supabase.
+                The website is hosted using GitHub Pages.
+            </p>
+            <p>
+                These services may process information under their
+                own privacy policies and service arrangements.
+                Information may be processed in different locations,
+                depending on the services and configurations used.
+            </p>
+            <p>
+                Their processing of technical information should be
+                considered separately from the information intentionally
+                submitted through PROMYS features.
+            </p>
+        </section>
+
+        <section>
+            <h2>05 / Data Retention</h2>
+            <p>
+                Submitted responses may remain in the database until
+                they are deleted. A specific retention period has not
+                yet been established.
+            </p>
+            <p>
+                If you have a concern about a submission or wish to
+                request its removal, please contact us. Because
+                responses are designed to be anonymous, we may need
+                sufficient information to locate the relevant entry.
+            </p>
+        </section>
+
+        <section>
+            <h2>06 / Data Protection and Your Rights</h2>
+            <p>
+                Where personal data is processed, applicable data
+                protection law may give you rights concerning that
+                information. These may include the right to request
+                access, correction or erasure, or to object to certain
+                processing, depending on the circumstances.
+            </p>
+            <p>
+                UK data protection requirements may include the UK
+                General Data Protection Regulation and the Data
+                Protection Act 2018.
+            </p>
+            <p>
+                To raise a privacy concern or make a data-related
+                request, contact us using the details below.
+            </p>
+        </section>
+
+        <section>
+            <h2>07 / Children's Privacy</h2>
+            <p>
+                Visitors should avoid submitting sensitive personal
+                information about themselves or others through the
+                anonymous response feature.
+            </p>
+            <p>
+                If you believe that personal information has been
+                submitted inappropriately, please contact us so the
+                matter can be reviewed.
+            </p>
+        </section>
+
+        <section>
+            <h2>08 / Changes to This Policy</h2>
+            <p>
+                This policy may be updated when the website, its
+                features or applicable legal requirements change.
+                The latest version will be published on this page,
+                together with an updated revision date.
+            </p>
+            <p>
+                We encourage visitors to review this page periodically.
+            </p>
+        </section>
+
+        <section>
+            <h2>09 / Contact</h2>
+            <p>
+                For privacy questions, data protection enquiries or
+                requests relating to information submitted through
+                PROMYS, contact:
+            </p>
+
+            <div class="contact">
+                <p>PRIVACY ENQUIRIES</p>
+                <a href="mailto:sana@promys.co.uk">
+                    sana@promys.co.uk
+                </a>
+            </div>
+        </section>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <p>© PROMYS</p>
+    <a href="/privacy/policy.html">PRIVACY POLICY</a>
+</footer>
+
+</body>
+</html>
