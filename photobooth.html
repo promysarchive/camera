@@ -355,7 +355,19 @@ navigator.mediaDevices.getUserMedia({ video: true })
 let photos = [];
 let finalImage = "";
 let selectedLayout = "vertical";
-  
+
+// PHOTO LAYOUT SELECTION
+document.querySelectorAll("[data-layout]").forEach(button => {
+    button.addEventListener("click", function() {
+        selectedLayout = this.dataset.layout;
+
+        document.querySelectorAll("[data-layout]").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+    });
+});
     document.getElementById("download").addEventListener("click", function() {
 
     if (finalImage === "") {
@@ -417,18 +429,6 @@ document.getElementById("snap").addEventListener("click", function() {
         document.getElementById("flash").style.opacity = "0";
     }, 150);
      
-// PHOTO LAYOUT SELECTION
-document.querySelectorAll("[data-layout]").forEach(button => {
-    button.addEventListener("click", function() {
-        selectedLayout = this.dataset.layout;
-
-        document.querySelectorAll("[data-layout]").forEach(btn => {
-            btn.classList.remove("active");
-        });
-
-        this.classList.add("active");
-    });
-});
     const video = document.getElementById("camera");
 const canvas = document.getElementById("photo");
 
@@ -529,6 +529,12 @@ finalImage = finalCanvas.toDataURL("image/png");
 alert("STRIP READY");
     document.getElementById("snap").style.display = "none";
     document.getElementById("retake").style.display = "inline-block";
+
+  document.getElementById("strip").classList.toggle(
+    "grid-layout",
+    selectedLayout === "grid"
+);
+  
     document.getElementById("strip").style.display = "flex";
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
