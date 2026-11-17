@@ -402,6 +402,13 @@ context.drawImage(
 context.filter = "none";
 
 context.restore();
+    if (window.drawPromysFaceFilter) {
+    window.drawPromysFaceFilter(
+        context,
+        canvas.width,
+        canvas.height
+    );
+}
 
 photos.push(canvas.toDataURL("image/png"));
 
@@ -512,22 +519,53 @@ document.querySelector(".camera-frame").classList.toggle(
 });
     
 </script>
-    <script type="module">
+ <script type="module">
 import {
     FaceLandmarker,
     FilesetResolver
 } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs";
+
+const video = document.getElementById("camera");
+const overlay = document.getElementById("faceOverlay");
+const ctx = overlay.getContext("2d");
+
+const faceImages = {
+    headhearts: new Image(),
+    cat: new Image(),
+    moustache: new Image()
+};
+
+Object.entries(faceImages).forEach(([name, img]) => {
+    img.src = "/" + name + ".png";
+});
+
+let selectedFaceFilter = "none";
+let latestFace = null;
+let faceLandmarker = null;
+
+document.querySelectorAll("[data-face]").forEach(button => {
+    button.addEventListener("click", () => {
+        selectedFaceFilter = button.dataset.face;
+
+        document.querySelectorAll("[data-face]").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+    });
+});
 
 async function setupFaceTracking() {
     const vision = await FilesetResolver.forVisionTasks(
         "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm"
     );
 
-    window.faceLandmarker = await FaceLandmarker.createFromOptions(
+    faceLandmarker = await FaceLandmarker.createFromOptions(
         vision,
         {
             baseOptions: {
-                modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+                modelAssetPath:
+                    "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
             },
             runningMode: "VIDEO",
             numFaces: 1
@@ -535,7 +573,110 @@ async function setupFaceTracking() {
     );
 
     console.log("PROMYS face tracking ready!");
+
+    requestAnimationFrame(trackFace);
 }
+
+function drawFilter(context, width, height, landmarks) {
+    if (!landmarks || selectedFaceFilter === "none") return;
+
+    const point = index => ({
+        x: landmarks[index].x * width,
+        y: landmarks[index].y * height
+    });
+
+    const left = point(234);
+    const right = point(454);
+    const nose = point(1);
+    const forehead = point(10);
+
+    const faceWidth = Math.hypot(
+        right.x - left.x,
+        right.y - left.y
+    );
+
+    let img = faceImages[selectedFaceFilter];
+
+    if (!img.complete || !img.naturalWidth) return;
+
+    const drawImage = (centerX, centerY, drawWidth) => {
+        const ratio = img.naturalHeight / img.naturalWidth;
+        const drawHeight = drawWidth * ratio;
+
+        context.drawImage(
+            img,
+            centerX - drawWidth / 2,
+            centerY - drawHeight / 2,
+            drawWidth,
+            drawHeight
+        );
+    };
+
+    if (selectedFaceFilter === "headhearts") {
+        drawImage(
+            forehead.x,
+            forehead.y - faceWidth * 0.35,
+            faceWidth * 0.9
+        );
+    }
+
+    if (selectedFaceFilter === "cat") {
+        drawImage(
+            nose.x,
+            nose.y + faceWidth * 0.08,
+            faceWidth * 0.9
+        );
+    }
+
+    if (selectedFaceFilter === "moustache") {
+        drawImage(
+            nose.x,
+            nose.y + faceWidth * 0.13,
+            faceWidth * 0.55
+        );
+    }
+}
+
+function trackFace() {
+    if (
+        video.readyState >= 2 &&
+        faceLandmarker
+    ) {
+        if (
+            overlay.width !== video.videoWidth ||
+            overlay.height !== video.videoHeight
+        ) {
+            overlay.width = video.videoWidth;
+            overlay.height = video.videoHeight;
+        }
+
+        const results = faceLandmarker.detectForVideo(
+            video,
+            performance.now()
+        );
+
+        ctx.clearRect(0, 0, overlay.width, overlay.height);
+
+        latestFace = results.faceLandmarks?.[0] || null;
+
+        if (latestFace) {
+            drawFilter(
+                ctx,
+                overlay.width,
+                overlay.height,
+                latestFace
+            );
+        }
+    }
+
+    requestAnimationFrame(trackFace);
+}
+
+window.drawPromysFaceFilter = function(context, width, height) {
+    if (latestFace) {
+        drawFilter(context, width, height, latestFace);
+    }
+};
 
 setupFaceTracking();
 </script>
