@@ -623,11 +623,11 @@ function drawFilter(context, width, height, landmarks) {
     if (selectedFaceFilter === "cat") {
         drawImage(
             nose.x,
-            nose.y + faceWidth * 0.1,
-            faceWidth * 1.4
+            nose.y - faceWidth * 0.12,
+            faceWidth * 2.5
         );
     }
-
+    
     if (selectedFaceFilter === "moustache") {
         drawImage(
             nose.x,
