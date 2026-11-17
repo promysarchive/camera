@@ -283,7 +283,7 @@ color:black;
     <div id="strip"></div>
 
     <button id="download">DOWNLOAD</button>
-
+    <button id="retake" style="display:none;">RETAKE</button>
 </div>
 
 </div>
@@ -318,8 +318,18 @@ let finalImage = "";
     link.download = "promys-photobooth.png";
 
     link.click();
-
+    
 });
+document.getElementById("retake").addEventListener("click", function() {
+    photos = [];
+    finalImage = "";
+
+    document.getElementById("strip").innerHTML = "";
+    document.getElementById("strip").style.display = "none";
+    document.getElementById("retake").style.display = "none";
+    document.getElementById("snap").style.display = "inline-block";
+});
+    
     
 document.getElementById("snap").addEventListener("click", function() {
 
@@ -427,6 +437,8 @@ finalContext.fillText(
 finalImage = finalCanvas.toDataURL("image/png");
 
 alert("STRIP READY");
+    document.getElementById("snap").style.display = "none";
+    document.getElementById("retake").style.display = "inline-block";
     document.getElementById("strip").style.display = "flex";
     document.getElementById("strip").innerHTML = `
         <img src="${photos[0]}" >
