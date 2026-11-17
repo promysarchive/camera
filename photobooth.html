@@ -321,6 +321,15 @@ let finalImage = "";
     
 });
 document.getElementById("retake").addEventListener("click", function() {
+
+    const confirmRetake = confirm(
+        "WARNING: All 4 photos will be permanently deleted and cannot be recovered. Are you sure you want to retake?"
+    );
+
+    if (!confirmRetake) {
+        return;
+    }
+
     photos = [];
     finalImage = "";
 
@@ -328,6 +337,7 @@ document.getElementById("retake").addEventListener("click", function() {
     document.getElementById("strip").style.display = "none";
     document.getElementById("retake").style.display = "none";
     document.getElementById("snap").style.display = "inline-block";
+
 });
     
     
