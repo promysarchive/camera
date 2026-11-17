@@ -615,16 +615,16 @@ function drawFilter(context, width, height, landmarks) {
     if (selectedFaceFilter === "headhearts") {
         drawImage(
             forehead.x,
-            forehead.y - faceWidth * 0.35,
-            faceWidth * 0.9
+            forehead.y - faceWidth * 0.7,
+            faceWidth * 1.5
         );
     }
 
     if (selectedFaceFilter === "cat") {
         drawImage(
             nose.x,
-            nose.y + faceWidth * 0.08,
-            faceWidth * 0.9
+            nose.y + faceWidth * 0.1,
+            faceWidth * 1.4
         );
     }
 
@@ -632,7 +632,7 @@ function drawFilter(context, width, height, landmarks) {
         drawImage(
             nose.x,
             nose.y + faceWidth * 0.13,
-            faceWidth * 0.55
+            faceWidth * 0.9
         );
     }
 }
