@@ -497,5 +497,32 @@ document.querySelector(".camera-frame").classList.toggle(
 });
     
 </script>
+    <script type="module">
+import {
+    FaceLandmarker,
+    FilesetResolver
+} from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/vision_bundle.mjs";
+
+async function setupFaceTracking() {
+    const vision = await FilesetResolver.forVisionTasks(
+        "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm"
+    );
+
+    window.faceLandmarker = await FaceLandmarker.createFromOptions(
+        vision,
+        {
+            baseOptions: {
+                modelAssetPath: "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+            },
+            runningMode: "VIDEO",
+            numFaces: 1
+        }
+    );
+
+    console.log("PROMYS face tracking ready!");
+}
+
+setupFaceTracking();
+</script>
 </body>
 </html>
