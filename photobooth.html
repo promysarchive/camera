@@ -137,6 +137,24 @@ transform: scaleX(1.3);
     border:2px solid white;
     box-sizing:border-box;
 }
+/* 2x2 PHOTO LAYOUT */
+#strip.grid-layout {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 6px;
+    width: 300px;
+    box-sizing: border-box;
+}
+
+#strip.grid-layout img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+#strip.grid-layout .branding {
+    grid-column: 1 / -1;
+}
 
 .camera-frame{
     position:relative;
@@ -281,13 +299,23 @@ color:black;
         <canvas id="faceOverlay"></canvas>
         <div id="flash" class="flash"></div>
     </div>
-
+      
+    <div class="filter-options layout-options">
+        <button class="filter-btn active" data-layout="vertical">
+            VERTICAL
+        </button>
+        <button class="filter-btn" data-layout="grid">
+            2 × 2 GRID
+        </button>
+    </div>
+      
     <div class="filter-options">
         <button class="filter-btn active" data-filter="original">♡ ORIGINAL</button>
         <button class="filter-btn" data-filter="y2k">♡ Y2K</button>
         <button class="filter-btn" data-filter="pink">♡ PINK</button>
         <button class="filter-btn" data-filter="black">♡ B&W</button>
     </div>
+      
     <div class="filter-options face-filters">
         <button class="filter-btn active" data-face="none">NO FILTER</button>
         <button class="filter-btn" data-face="headhearts">♡ HEARTS</button>
@@ -326,6 +354,8 @@ navigator.mediaDevices.getUserMedia({ video: true })
 
 let photos = [];
 let finalImage = "";
+let selectedLayout = "vertical";
+  
     document.getElementById("download").addEventListener("click", function() {
 
     if (finalImage === "") {
@@ -353,7 +383,10 @@ document.getElementById("retake").addEventListener("click", function() {
 
     photos = [];
     finalImage = "";
-
+document.getElementById("strip").classList.toggle(
+    "grid-layout",
+    selectedLayout === "grid"
+);
     document.getElementById("strip").innerHTML = "";
     document.getElementById("strip").style.display = "none";
     document.getElementById("retake").style.display = "none";
@@ -383,7 +416,19 @@ document.getElementById("snap").addEventListener("click", function() {
     setTimeout(function() {
         document.getElementById("flash").style.opacity = "0";
     }, 150);
+     
+// PHOTO LAYOUT SELECTION
+document.querySelectorAll("[data-layout]").forEach(button => {
+    button.addEventListener("click", function() {
+        selectedLayout = this.dataset.layout;
 
+        document.querySelectorAll("[data-layout]").forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+        this.classList.add("active");
+    });
+});
     const video = document.getElementById("camera");
 const canvas = document.getElementById("photo");
 
@@ -431,8 +476,13 @@ if (photos.length === 4) {
 const finalCanvas = document.getElementById("finalStrip");
 const finalContext = finalCanvas.getContext("2d");
 
-finalCanvas.width = 300;
-finalCanvas.height = 980;
+if (selectedLayout === "grid") {
+    finalCanvas.width = 620;
+    finalCanvas.height = 560;
+} else {
+    finalCanvas.width = 300;
+    finalCanvas.height = 980;
+}
 
 finalContext.fillStyle = "white";
 finalContext.fillRect(0, 0, finalCanvas.width, finalCanvas.height);
@@ -447,30 +497,32 @@ Promise.all(
     })
 ).then(images => {
 
-    finalContext.drawImage(images[0], 10, 10, 280, 210);
-    finalContext.drawImage(images[1], 10, 240, 280, 210);
-    finalContext.drawImage(images[2], 10, 470, 280, 210);
-    finalContext.drawImage(images[3], 10, 700, 280, 210);
+    if (selectedLayout === "grid") {
 
-    finalContext.fillStyle = "black";
-    finalContext.font = "bold 30px Arial";
-    finalContext.textAlign = "center";
+        // 2x2 GRID
+        finalContext.drawImage(images[0], 10, 10, 290, 217.5);
+        finalContext.drawImage(images[1], 320, 10, 290, 217.5);
+        finalContext.drawImage(images[2], 10, 240, 290, 217.5);
+        finalContext.drawImage(images[3], 320, 240, 290, 217.5);
 
-    finalContext.fillText(
-        "PROMYS",
-        finalCanvas.width / 2,
-        940
-    );
+        finalContext.fillStyle = "black";
+        finalContext.font = "bold 30px Arial";
+        finalContext.textAlign = "center";
+        finalContext.fillText("PROMYS", 310, 520);
 
-finalContext.fillStyle = "black";
-finalContext.font = "bold 30px Arial";
-finalContext.textAlign = "center";
+    } else {
 
-finalContext.fillText(
-    "PROMYS",
-    finalCanvas.width / 2,
-    1340
-);
+        // ORIGINAL VERTICAL STRIP
+        finalContext.drawImage(images[0], 10, 10, 280, 210);
+        finalContext.drawImage(images[1], 10, 240, 280, 210);
+        finalContext.drawImage(images[2], 10, 470, 280, 210);
+        finalContext.drawImage(images[3], 10, 700, 280, 210);
+
+        finalContext.fillStyle = "black";
+        finalContext.font = "bold 30px Arial";
+        finalContext.textAlign = "center";
+        finalContext.fillText("PROMYS", 150, 940);
+    }
 
 finalImage = finalCanvas.toDataURL("image/png");
 
